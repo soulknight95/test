@@ -1,0 +1,9 @@
+        === HOA DON BAN HANG ===
+Thoi gian: Sun May 11 22:43:01 2025
+San pham            So luong  Don gia        Thanh tien     
+-------------------------------------------------------
+Dưa                35        4000           140000         
+-------------------------------------------------------
+Tong cong: 140000 VND
+Cam on quy khach!
+
