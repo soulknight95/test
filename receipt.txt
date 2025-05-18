@@ -1,0 +1,29 @@
+=== HOA DON BAN HANG ===
+Thoi gian: Sun May 11 13:49:13 2025
+San pham            So luong  Don gia        Thanh tien     
+----------------------------------------
+chuoi               3         2000           6000           
+----------------------------------------
+Tong cong: 6000 VND
+Cam on quy khach!
+
+        === HOA DON BAN HANG ===
+Thoi gian: Sun May 11 14:07:06 2025
+San pham            So luong  Don gia        Thanh tien     
+------------------------------------------------------
+Hấu               30        5000           150000         
+chuoi               10        2000           20000          
+----------------------------------------
+Tong cong: 170000 VND
+Cam on quy khach!
+
+        === HOA DON BAN HANG ===
+Thoi gian: Sun May 11 14:16:36 2025
+San pham            So luong  Don gia        Thanh tien     
+-------------------------------------------------------
+chuoi               34        2000           68000          
+dưa                3         9000           27000          
+-------------------------------------------------------
+Tong cong: 95000 VND
+Cam on quy khach!
+
