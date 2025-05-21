@@ -33,6 +33,28 @@ public:
     void setDiscountPercent(double percent) { discountPercent = percent; }
 
 };
+class KhachHang {
+private:
+    string id;
+    string name;
+    string phone;
+
+public:
+    KhachHang(string id, string name, string phone)
+        : id(id), name(name), phone(phone) {}
+
+    string getId() const { return id; }
+    string getName() const { return name; }
+    string getPhone() const { return phone; }
+
+    void setName(const string& newName) { name = newName; }
+    void setPhone(const string& newPhone) { phone = newPhone; }
+
+    void display() const {
+        cout << "ID: " << id << ", Ten: " << name << ", SDT: " << phone << endl;
+    }
+};
+
 // Cấu trúc SaleItem để lưu sản phẩm trong đơn hàng
 struct SaleItem {
     Product* product;
@@ -329,92 +351,151 @@ void menu() {
     Supermarket sm;
     int choice;
     while (true) {
-        cout << "\n=== Quan ly sieu thi ===" << endl;
-        cout << "1. Them san pham" << endl;
-        cout << "2. Hien thi san pham" << endl;
-        cout << "3. Quet ma vach de ban hang" << endl;
-        cout << "4. Hien thi don hang" << endl;
-        cout << "5. Thanh toan va in hoa don" << endl;
-        cout << "6. Xoa san pham khoi don hang" << endl;
-        cout << "7. Sua thong tin san pham" << endl;
-        cout << "8. Xoa san pham" << endl;
-        cout << "9. Thoat" << endl;
-        cout << "10. Tim kiem san pham theo ma vach" << endl;
-        cout << "11. Ap dung voucher cho san pham" << endl;
-
-        cout << "Chon: ";
+        cout << "\n=== QUẢN LÝ SIÊU THỊ ===" << endl;
+        cout << "1. Quản lý sản phẩm" << endl;
+        cout << "2. Bán hàng" << endl;
+        cout << "3. Hóa đơn & thanh toán" << endl;
+        cout << "4. Tìm kiếm & giảm giá" << endl;
+        cout << "0. Thoát" << endl;
+        cout << "Chọn: ";
         cin >> choice;
         cin.ignore();
 
-        if (choice == 9) break;
+        if (choice == 0) break;
 
         switch (choice) {
             case 1: {
-                string barcode, name;
-                double price;
-                int stock;
-                cout << "Nhap ma vach: "; getline(cin, barcode);
-                cout << "Nhap ten san pham: "; getline(cin, name);
-                cout << "Nhap gia: "; cin >> price;
-                cout << "Nhap ton kho: "; cin >> stock;
-                cin.ignore();
-                sm.addProduct(barcode, name, price, stock);
-                break;
-            }
-            case 2: sm.displayProducts(); break;
-            case 3: {
-                string barcode = sm.scanBarcode();
-                int quantity;
-                cout << "Nhap so luong: "; cin >> quantity;
-                cin.ignore();
-                sm.addToOrder(barcode, quantity);
-                break;
-            }
-            case 4: sm.displayOrder(); break;
-            case 5: sm.checkout(); break;
-            case 6: {
-                string barcode;
-                cout << "Nhap ma vach san pham can xoa: ";
-                getline(cin, barcode);
-                sm.removeFromOrder(barcode);
-                break;
-            }
-            case 7: {
-                string barcode;
-                cout << "Nhap ma vach san pham can sua: ";
-                getline(cin, barcode);
-                sm.editProduct(barcode);
-                break;
-            }
-            case 8: {
-                string barcode;
-                cout << "Nhap ma vach san pham can xoa: ";
-                getline(cin, barcode);
-                sm.deleteProduct(barcode);
-                break;
-            }
-            case 10: {
-                string barcode;
-                cout << "Nhap ma vach can tim: ";
-                getline(cin, barcode);
-                sm.searchProductByBarcode(barcode);
-                break;
-            }
-            case 11: {
-                string barcode;
-                double percent;
-                cout << "Nhap ma vach san pham: ";
-                getline(cin, barcode);
-                cout << "Nhap phan tram giam gia: ";
-                cin >> percent; cin.ignore();
-                for (auto& p : sm.getProducts()) {
-                    if (p.getBarcode() == barcode) {
-                        p.setDiscountPercent(percent);
-                        sm.saveToFile();
-                        cout << "Da ap dung voucher " << percent << "% cho san pham.\n";
-                        break;
+                int sub;
+                do {
+                    cout << "\n=== QUẢN LÝ SẢN PHẨM ===" << endl;
+                    cout << "1. Thêm sản phẩm" << endl;
+                    cout << "2. Sửa sản phẩm" << endl;
+                    cout << "3. Xóa sản phẩm" << endl;
+                    cout << "4. Hiển thị danh sách sản phẩm" << endl;
+                    cout << "0. Quay lại" << endl;
+                    cout << "Chọn: ";
+                    cin >> sub;
+                    cin.ignore();
+                    switch (sub) {
+                        case 1: {
+                            string barcode, name;
+                            double price;
+                            int stock;
+                            cout << "Nhap ma vach: "; getline(cin, barcode);
+                            cout << "Nhap ten san pham: "; getline(cin, name);
+                            cout << "Nhap gia: "; cin >> price;
+                            cout << "Nhap ton kho: "; cin >> stock;
+                            cin.ignore();
+                            sm.addProduct(barcode, name, price, stock);
+                            break;
+                        }
+                        case 2: {
+                            string barcode;
+                            cout << "Nhap ma vach can sua: ";
+                            getline(cin, barcode);
+                            sm.editProduct(barcode);
+                            break;
+                        }
+                        case 3: {
+                            string barcode;
+                            cout << "Nhap ma vach can xoa: ";
+                            getline(cin, barcode);
+                            sm.deleteProduct(barcode);
+                            break;
+                        }
+                        case 4:
+                            sm.displayProducts();
+                            break;
+                        case 0: break;
+                        default: cout << "Lua chon khong hop le!\n";
                     }
-                }
+                } while (sub != 0);
+                break;
+            }
+
+            case 2: {
+                int sub;
+                do {
+                    cout << "\n=== BÁN HÀNG ===" << endl;
+                    cout << "1. Quét mã vạch để thêm vào đơn hàng" << endl;
+                    cout << "2. Xóa sản phẩm khỏi đơn hàng" << endl;
+                    cout << "3. Hiển thị đơn hàng hiện tại" << endl;
+                    cout << "0. Quay lại" << endl;
+                    cout << "Chọn: ";
+                    cin >> sub;
+                    cin.ignore();
+                    switch (sub) {
+                        case 1: {
+                            string barcode = sm.scanBarcode();
+                            int quantity;
+                            cout << "Nhap so luong: "; cin >> quantity;
+                            cin.ignore();
+                            sm.addToOrder(barcode, quantity);
+                            break;
+                        }
+                        case 2: {
+                            string barcode;
+                            cout << "Nhap ma vach can xoa khoi don hang: ";
+                            getline(cin, barcode);
+                            sm.removeFromOrder(barcode);
+                            break;
+                        }
+                        case 3:
+                            sm.displayOrder();
+                            break;
+                        case 0: break;
+                        default: cout << "Lua chon khong hop le!\n";
+                    }
+                } while (sub != 0);
+                break;
+            }
+
+            case 3: {
+                cout << "\n=== THANH TOÁN ===\n";
+                sm.checkout();
+                break;
+            }
+
+            case 4: {
+                int sub;
+                do {
+                    cout << "\n=== TÌM KIẾM & GIẢM GIÁ ===" << endl;
+                    cout << "1. Tìm kiếm sản phẩm theo mã vạch" << endl;
+                    cout << "2. Áp dụng voucher giảm giá cho sản phẩm" << endl;
+                    cout << "0. Quay lại" << endl;
+                    cout << "Chọn: ";
+                    cin >> sub;
+                    cin.ignore();
+                    switch (sub) {
+                        case 1: {
+                            string barcode;
+                            cout << "Nhap ma vach can tim: ";
+                            getline(cin, barcode);
+                            sm.searchProductByBarcode(barcode);
+                            break;
+                        }
+                        case 2: {
+                            string barcode;
+                            double percent;
+                            cout << "Nhap ma vach san pham: ";
+                            getline(cin, barcode);
+                            cout << "Nhap phan tram giam gia: ";
+                            cin >> percent;
+                            cin.ignore();
+                            for (auto& p : sm.getProducts()) {
+                                if (p.getBarcode() == barcode) {
+                                    p.setDiscountPercent(percent);
+                                    sm.saveToFile();
+                                    cout << "Da ap dung voucher " << percent << "% cho san pham.\n";
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        case 0: break;
+                        default: cout << "Lua chon khong hop le!\n";
+                    }
+                } while (sub != 0);
                 break;
             }
 

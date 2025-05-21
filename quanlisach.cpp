@@ -96,10 +96,14 @@ class Card{
 
 int main(){
     vector<Card> cards;
-    cards.push_back(Card("le huyen", "to nga", 20000));
-    cards.push_back(Card("le huyen", "duy chien", 90000));
-    cards.push_back(Card("le huyen", "thi yen", 8000));
-    cards.push_back(Card("thuy vy", "huyen trang", 87998));
+    cards.push_back(Card("one one", "to nga", 2));
+    cards.push_back(Card("one one", "duy chien", 9));
+    cards.push_back(Card("one one", "one one", 6));
+    cards.push_back(Card("thuy vy", "huyen trang", 7));
+    cards.push_back(Card("thu hoai", "one one", 10));
+    cards.push_back(Card("one one", "one one", 9));
+    cards.push_back(Card("one one", "one one", 8));
+
     
 
     Card:: sortCards(cards);
