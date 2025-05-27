@@ -7,3 +7,26 @@ Dưa                35        4000           140000
 Tong cong: 140000 VND
 Cam on quy khach!
 
+        === HOA DON BAN HANG ===
+Thoi gian: Sun May 18 18:19:55 2025
+San pham            So luong  Don gia        Giam      Thanh tien     
+------------------------------------------------------------------
+chuoi               20        5000           30.000000%70000          
+Dưa                4         4000           70.000000%4800           
+------------------------------------------------------------------
+Tong tien truoc giam: 116000 VND
+Giam gia: 41200 VND
+Tong cong: 74800 VND
+Cam on quy khach!
+
+        === HOA DON BAN HANG ===
+Thoi gian: Sun May 18 18:22:23 2025
+San pham            So luong  Don gia        Giam      Thanh tien     
+------------------------------------------------------------------
+chuoi               10        5000           30.000000%35000          
+------------------------------------------------------------------
+Tong tien truoc giam: 50000 VND
+Giam gia: 15000 VND
+Tong cong: 35000 VND
+Cam on quy khach!
+
